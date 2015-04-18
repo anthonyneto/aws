@@ -110,6 +110,10 @@ action :prune do
   end
 end
 
+action :delete_on_termination do
+  ec2.modify_instance_attribute(instance_id: instance_id, attribute: 'blockDeviceMapping', block_device_mappings:[{device_name: new_resource.device, ebs: {delete_on_termination: new_resource.delete_on_termination} }])
+end
+
 private
 
 def volume_id_in_node_data

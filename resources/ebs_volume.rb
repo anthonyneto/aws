@@ -1,4 +1,4 @@
-actions :create, :attach, :detach, :snapshot, :prune
+actions :create, :attach, :detach, :snapshot, :prune, :delete_on_termination
 
 state_attrs :availability_zone,
             :aws_access_key,
@@ -29,6 +29,7 @@ attribute :volume_type,           kind_of: String, default: 'standard'
 attribute :piops,                 kind_of: Integer, default: 0
 attribute :encrypted,             kind_of: [TrueClass, FalseClass], default: false
 attribute :kms_key_id,            kind_of: String
+attribute :delete_on_termination, kind_of: [TrueClass, FalseClass], default: false
 
 def initialize(*args)
   super
